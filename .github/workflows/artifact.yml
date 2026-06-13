@@ -9,15 +9,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
+    - name: list the dir
+      run: ls ./
     - name: Create a text file
-      run: echo "Hello, world!" > hello.txt
+      run: echo "Hello, world!" >> ./artifacts/hello.txt
 
     - name: Archive text file
       uses: actions/upload-artifact@v7
       with:
         name: hello-artifact
-        path: ./artifacts
+        path: ./artifacts/hello.txt
   
   download:
    needs: build
